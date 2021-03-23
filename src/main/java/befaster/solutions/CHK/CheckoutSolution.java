@@ -79,10 +79,3 @@ public class CheckoutSolution {
         System.out.println(new CheckoutSolution().checkout("A A  B C D B    A A"));
     }
 }
-
-
-
-
-
-
-
