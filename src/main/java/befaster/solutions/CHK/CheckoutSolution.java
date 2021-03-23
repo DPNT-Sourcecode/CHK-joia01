@@ -48,7 +48,6 @@ public class CheckoutSolution {
         // PARSE INPUT
         String items[];
         HashMap<String, Integer> item_cnt = new HashMap<>();
-        HashMap<String, Integer> free_item_cnt = new HashMap<>();
 
         if (skus.indexOf(",") > 0) items = skus.split("\\W+,\\W+");
         else if (skus.indexOf(";") > 0) items = skus.split(";\\W+");
@@ -83,8 +82,11 @@ public class CheckoutSolution {
                     String otherItem = item.combos[i].otherItem;
                     int free_cnt = count / item.combos[i].multiplier;
                     if (free_cnt == 0) continue;
-                    free_item_cnt.put(otherItem, free_cnt);
-
+                    Integer prev_count = item_cnt.get(otherItem);
+                    if (prev_count == null) prev_count = 0;
+                    int new_cnt = prev_count - free_cnt;
+                    if (new_cnt < 0) new_cnt = 0;
+                    item_cnt.put(otherItem, new_cnt);
                 }
             }
         }
@@ -95,17 +97,10 @@ public class CheckoutSolution {
             if (item == null) return -1;
 
             int count = item_cnt.get(key);
-            Integer free_count = free_item_cnt.get(key);
-            if (free_count == null) free_count = 0;
             if (item.combos != null)  {
                 for (int i = 0; i < item.combos.length; i++) {
                     Combo combo = item.combos[i];
                     if (combo.special_value == -1) continue;
-
-                    if ((count > 0) && ((count + free_count) >= combo.multiplier)) {
-                        free_count -= combo.multiplier - count;
-                        count = combo.multiplier;
-                    }
 
                     total += (count / combo.multiplier) * combo.special_value;
                     count = count % combo.multiplier;
@@ -119,7 +114,7 @@ public class CheckoutSolution {
 
     public static void main(String[] args) {
         //do some quick tests inline here
-        //System.out.println(new CheckoutSolution().checkout("AABCDBAAEEAAAAA"));
+        System.out.println(new CheckoutSolution().checkout("AABCDBAAEEAAAAA"));
         System.out.println(new CheckoutSolution().checkout("EE"));
         System.out.println(new CheckoutSolution().checkout("EEB"));
         System.out.println(new CheckoutSolution().checkout("EEEB"));
@@ -132,6 +127,7 @@ public class CheckoutSolution {
         */
     }
 }
+
 
 
 
