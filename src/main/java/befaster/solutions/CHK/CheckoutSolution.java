@@ -81,7 +81,8 @@ public class CheckoutSolution {
                 if (item.combos[i].otherItem != null)
                 {
                     String otherItem = item.combos[i].otherItem;
-                    if (otherItem == key) continue;
+
+
                     int free_cnt = count / item.combos[i].multiplier;
                     if (free_cnt == 0) continue;
                     Integer prev_count = item_cnt.get(otherItem);
@@ -115,3 +116,4 @@ public class CheckoutSolution {
     }
 
 }
+
