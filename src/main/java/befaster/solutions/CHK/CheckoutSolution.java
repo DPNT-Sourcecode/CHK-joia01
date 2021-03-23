@@ -10,14 +10,23 @@ public class CheckoutSolution {
         // assume skus of form  "A;B;C"
 
         String items[];
+        int item_cnt[]; // count of each
 
         if (skus.indexOf(" ") > 0) items = skus.split(" ");
         else if (skus.indexOf(",") > 0) items = skus.split(",");
         else if (skus.indexOf(";") > 0) items = skus.split(";");
         else {
-            for (int i = 0; i < )
+            items = new String[skus.length()];
+            for (int i = 0; i < skus.length(); i++)
+                items[i] = "" + skus.charAt(i);
         }
+
+        for (int i = 0; i < items.length; i++) {
+            
+        }
+
     }
 }
+
 
 
