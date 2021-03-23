@@ -8,7 +8,7 @@ import java.util.Hashtable;
 public class CheckoutSolution {
 
     class SkuValue {
-        String ident;
+        String ident; // only for convenience; not used
         int value;
         int multiplier;
         int special_value;
@@ -25,9 +25,9 @@ public class CheckoutSolution {
 
     public CheckoutSolution() {
         priceTable.put("A", new SkuValue("A", 50, 3, 130));
-        priceTable.put("A", new SkuValue("B", 30, 2, 45));
-        priceTable.put("A", new SkuValue("C", 20, -1, 0));
-        priceTable.put("A", new SkuValue("D", 15, -1, 0));
+        priceTable.put("B", new SkuValue("B", 30, 2, 45));
+        priceTable.put("C", new SkuValue("C", 20, -1, 0));
+        priceTable.put("D", new SkuValue("D", 15, -1, 0));
     }
 
     public Integer checkout(String skus) {
@@ -65,7 +65,7 @@ public class CheckoutSolution {
             if (item.multiplier != -1)
                 total += (count / item.multiplier) * item.special_value + (count % item.multiplier) * item.value;
             else
-                total +=
+                total += count * item.value;
         }
 
         return total;
@@ -77,6 +77,7 @@ public class CheckoutSolution {
         System.out.println(result);
     }
 }
+
 
 
 
