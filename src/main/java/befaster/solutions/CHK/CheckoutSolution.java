@@ -108,7 +108,7 @@ public class CheckoutSolution {
 
     public static void main(String[] args) {
         //do some quick tests inline here
-        System.out.println(new CheckoutSolution().checkout("AABCDBAAEE"));
+        System.out.println(new CheckoutSolution().checkout("AABCDBAAEEAAAAA"));
         /*
         System.out.println(new CheckoutSolution().checkout("A,  A,B,C,D,B,A,A"));
         System.out.println(new CheckoutSolution().checkout("A;A;  B;C;D;B;A;A"));
@@ -116,6 +116,7 @@ public class CheckoutSolution {
         */
     }
 }
+
 
 
 
