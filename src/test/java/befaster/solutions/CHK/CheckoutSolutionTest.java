@@ -65,7 +65,3 @@ public class CheckoutSolutionTest {
         Assert.assertEquals((long)(new CheckoutSolution().checkout("ABCDEF")), 165);
     }
 }
-
-
-
-
