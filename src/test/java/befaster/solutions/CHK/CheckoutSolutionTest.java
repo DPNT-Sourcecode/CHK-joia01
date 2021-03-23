@@ -32,13 +32,13 @@ public class CheckoutSolutionTest {
     @Test
     public void test5()
     {
-        Assert.assertEquals((long)(new CheckoutSolution().checkout("EEEBFFF")), 140);
+        Assert.assertEquals((long)(new CheckoutSolution().checkout("EEEBFF")), 140);
     }
 
     @Test
     public void test6()
     {
-        Assert.assertEquals((long)(new CheckoutSolution().checkout("EEEBFF")), 140);
+        Assert.assertEquals((long)(new CheckoutSolution().checkout("EEEBFFF")), 140);
     }
 
     @Test
@@ -47,4 +47,5 @@ public class CheckoutSolutionTest {
         Assert.assertEquals((long)(new CheckoutSolution().checkout("FFFFFFFF")), 60);
     }
 }
+
 
