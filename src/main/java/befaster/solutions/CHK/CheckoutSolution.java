@@ -7,27 +7,33 @@ import java.util.Hashtable;
 
 public class CheckoutSolution {
 
-    class SkuValue {
-        String ident; // only for convenience; not used
-        int value;
+    class Combo {
         int multiplier;
         int special_value;
 
-        public SkuValue(String ident, int value, int multiplier, int special_value) {
-            this.ident = ident;
-            this.value = value;
+        public Combo(int multiplier, int special_value) {
             this.multiplier = multiplier;
             this.special_value = special_value;
+        }
+    }
+
+    class SkuValue {
+        int value;
+        Combo combos[];
+
+        public SkuValue(int value, Combo combos[]) {
+            this.value = value;
+            this.combos = combos;
         }
     }
 
     Hashtable<String, SkuValue> priceTable = new Hashtable<>(); // overkill for this, but for for large number of items
 
     public CheckoutSolution() {
-        priceTable.put("A", new SkuValue("A", 50, 3, 130));
-        priceTable.put("B", new SkuValue("B", 30, 2, 45));
-        priceTable.put("C", new SkuValue("C", 20, -1, 0));
-        priceTable.put("D", new SkuValue("D", 15, -1, 0));
+        priceTable.put("A", new SkuValue(50, [ new Combo(3, 130), new Combo(5, 200)]);
+        priceTable.put("B", new SkuValue(30, 2, 45));
+        priceTable.put("C", new SkuValue(20, -1, 0));
+        priceTable.put("D", new SkuValue(15, -1, 0));
     }
 
     public Integer checkout(String skus) {
@@ -79,3 +85,4 @@ public class CheckoutSolution {
         System.out.println(new CheckoutSolution().checkout("A A  B C D B    A A"));
     }
 }
+
