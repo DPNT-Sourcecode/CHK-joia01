@@ -36,7 +36,7 @@ public class CheckoutSolution {
         priceTable.put("B", new SkuValue(30, new Combo[]{new Combo(2, 45, null)}));
         priceTable.put("C", new SkuValue(20, null));
         priceTable.put("D", new SkuValue(15, null));
-        priceTable.put("E", new SkuValue(40, new Combo[]{new Combo(-1, 0, "B")}));
+        priceTable.put("E", new SkuValue(40, new Combo[]{new Combo(1, -1, "B")}));
     }
 
     public Integer checkout(String skus) {
@@ -102,7 +102,7 @@ public class CheckoutSolution {
                     Combo combo = item.combos[i];
                     if (combo.multiplier == -1) continue;
 
-                    if (count + free_count >= combo.multiplier) {
+                    if ((count > 0) && ((count + free_count) >= combo.multiplier)) {
                         free_count -= combo.multiplier - count;
                         count = combo.multiplier;
                     }
@@ -121,6 +121,8 @@ public class CheckoutSolution {
         //do some quick tests inline here
         //System.out.println(new CheckoutSolution().checkout("AABCDBAAEEAAAAA"));
         System.out.println(new CheckoutSolution().checkout("EE"));
+        System.out.println(new CheckoutSolution().checkout("EEB"));
+        System.out.println(new CheckoutSolution().checkout("EEEB"));
         //System.out.println(new CheckoutSolution().checkout("ABCDE"));
         //System.out.println(new CheckoutSolution().checkout("AAAAA"));
         /*
@@ -130,5 +132,6 @@ public class CheckoutSolution {
         */
     }
 }
+
 
 
