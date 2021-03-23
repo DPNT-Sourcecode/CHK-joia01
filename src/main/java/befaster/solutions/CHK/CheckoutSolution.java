@@ -85,6 +85,7 @@ public class CheckoutSolution {
                     int free_cnt = 0;
 
                     if (otherItem.equals(key)) {
+                        if ((count / (multiplier + 1)) == 0) free_cnt = 0;
                         free_cnt = count - ((count / (multiplier + 1)) * (multiplier + 1));
                     }
                     else {
@@ -123,5 +124,6 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
