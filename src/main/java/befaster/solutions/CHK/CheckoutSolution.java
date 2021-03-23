@@ -71,8 +71,10 @@ public class CheckoutSolution {
         for (String key : item_cnt.keySet())
         {
             SkuValue item = priceTable.get(key);
-            int count = item_cnt.get(key);
+            if (item == null) return -1;
             if (item.combos == null) continue;
+
+            int count = item_cnt.get(key);
             for (int i = 0; i < item.combos.length; i++)
             {
                 if (item.combos[i].otherItem != null)
@@ -89,17 +91,16 @@ public class CheckoutSolution {
         for (String key : item_cnt.keySet())
         {
             SkuValue item = priceTable.get(key);
-            int count = item_cnt.get(key);
             if (item == null) return -1;
+            if (item.combos == null) continue;
 
+            int count = item_cnt.get(key);
             for (int i = 0; i < item.combos.length; i++) {
                 Combo combo = item.combos[i];
-
+                total += (count / combo.multiplier) * combo.special_value;
+                count = count % combo.multiplier;
             }
-            if (item.multiplier != -1)
-                total += (count / item.multiplier) * item.special_value + (count % item.multiplier) * item.value;
-            else
-                total += count * item.value;
+            total += count * item.value;
         }
 
         return total;
@@ -107,12 +108,15 @@ public class CheckoutSolution {
 
     public static void main(String[] args) {
         //do some quick tests inline here
-        System.out.println(new CheckoutSolution().checkout("AABCDBAA"));
+        System.out.println(new CheckoutSolution().checkout("AABCDBAAEE"));
+        /*
         System.out.println(new CheckoutSolution().checkout("A,  A,B,C,D,B,A,A"));
         System.out.println(new CheckoutSolution().checkout("A;A;  B;C;D;B;A;A"));
         System.out.println(new CheckoutSolution().checkout("A A  B C D B    A A"));
+        */
     }
 }
+
 
 
 
