@@ -81,7 +81,8 @@ public class CheckoutSolution {
         priceTable.put("Z", new SkuValue(50, null));
 
         groups = new Group[1];
-        groups[0] = new Group(new String[] { "S", "T", "X", "Y", "Z" }, new Combo(3, 45, null));
+        groups[0] = new Group(new String[] { "Z", "S", "T", "Y", "X" }, // in decreasing order of value
+                              new Combo(3, 45, null));
     }
 
     public Integer checkout(String skus) {
@@ -152,7 +153,8 @@ public class CheckoutSolution {
             for (String key : item_cnt.keySet()) {
                 if (group.isInGroup(key)) groupCnt++;
             }
-            
+            total += groupCnt / group.combo.multiplier * group.combo.special_value;
+
         }
 
         // FINAL COMPUTATION
@@ -178,10 +180,3 @@ public class CheckoutSolution {
     }
 
 }
-
-
-
-
-
-
-

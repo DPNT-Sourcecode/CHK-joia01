@@ -71,4 +71,3 @@ public class CheckoutSolutionTest {
         Assert.assertEquals((long)(new CheckoutSolution().checkout("G")), 20);
     }
 }
-
