@@ -30,10 +30,11 @@ public class CheckoutSolution {
     Hashtable<String, SkuValue> priceTable = new Hashtable<>(); // overkill for this, but for for large number of items
 
     public CheckoutSolution() {
-        priceTable.put("A", new SkuValue(50, [ new Combo(3, 130), new Combo(5, 200)]);
-        priceTable.put("B", new SkuValue(30, 2, 45));
-        priceTable.put("C", new SkuValue(20, -1, 0));
-        priceTable.put("D", new SkuValue(15, -1, 0));
+        priceTable.put("A", new SkuValue(50, new Combo[] { new Combo(3, 130), new Combo(5, 200)} ));
+        priceTable.put("B", new SkuValue(50, new Combo[] { new Combo(2, 45) } ));
+        priceTable.put("C", new SkuValue(20, null));
+        priceTable.put("D", new SkuValue(15, null));
+        priceTable.put("E", new SkuValue(15, null));
     }
 
     public Integer checkout(String skus) {
@@ -85,4 +86,5 @@ public class CheckoutSolution {
         System.out.println(new CheckoutSolution().checkout("A A  B C D B    A A"));
     }
 }
+
 
