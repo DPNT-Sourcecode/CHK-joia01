@@ -41,5 +41,3 @@ public class CheckoutSolutionTest {
         Assert.assertEquals((long)(new CheckoutSolution().checkout("EEEBFF")), 140);
     }
 }
-
-
