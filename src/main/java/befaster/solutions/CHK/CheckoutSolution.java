@@ -37,6 +37,14 @@ public class CheckoutSolution {
             this.members = members;
             this.combo = combo;
         }
+
+        public boolean isInGroup(String item)
+        {
+            for (int i = 0; i < members.length; i++) {
+                if (members[i].equals(item)) return true;
+            }
+            return false;
+        }
     }
 
     Hashtable<String, SkuValue> priceTable = null;
@@ -142,8 +150,9 @@ public class CheckoutSolution {
             Group group = groups[i];
             int groupCnt = 0;
             for (String key : item_cnt.keySet()) {
-                
+                if (group.isInGroup(key)) groupCnt++;
             }
+            
         }
 
         // FINAL COMPUTATION
@@ -169,6 +178,7 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
 
