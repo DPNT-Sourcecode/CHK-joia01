@@ -72,7 +72,18 @@ public class CheckoutSolution {
         {
             SkuValue item = priceTable.get(key);
             int count = item_cnt.get(key);
-            
+            if (item.combos == null) continue;
+            for (int i = 0; i < item.combos.length; i++)
+            {
+                if (item.combos[i].otherItem != null)
+                {
+                    String otherItem = item.combos[i].otherItem;
+                    int cnt1 = count / item.combos[i].multiplier;
+                    int cnt2 = count % item.combos[i].multiplier;
+                    item_cnt.put(otherItem, item_cnt.get(otherItem) + cnt1);
+                    item_cnt.put(key, cnt2);
+                }
+            }
         }
 
         for (String key : item_cnt.keySet())
@@ -81,6 +92,10 @@ public class CheckoutSolution {
             int count = item_cnt.get(key);
             if (item == null) return -1;
 
+            for (int i = 0; i < item.combos.length; i++) {
+                Combo combo = item.combos[i];
+
+            }
             if (item.multiplier != -1)
                 total += (count / item.multiplier) * item.special_value + (count % item.multiplier) * item.value;
             else
@@ -98,6 +113,7 @@ public class CheckoutSolution {
         System.out.println(new CheckoutSolution().checkout("A A  B C D B    A A"));
     }
 }
+
 
 
 
