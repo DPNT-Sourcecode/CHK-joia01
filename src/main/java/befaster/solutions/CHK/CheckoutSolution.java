@@ -22,10 +22,12 @@ public class CheckoutSolution {
     }
 
     class SkuValue {
+        String ident;
         int value;
         Combo combos[];
 
-        public SkuValue(int value, Combo combos[]) {
+        public SkuValue(String ident, int value, Combo combos[]) {
+            this.ident = ident;
             this.value = value;
             this.combos = combos;
         }
@@ -158,7 +160,10 @@ public class CheckoutSolution {
                 }
             });
             for (String key : item_cnt.keySet()) {
-                if (group.isInGroup(key)) groupCnt++;
+                if (group.isInGroup(key)) {
+                    groupCnt++;
+                    queue.add();
+                }
             }
             total += groupCnt / group.combo.multiplier * group.combo.special_value;
             groupCnt -= groupCnt % group.combo.multiplier;
@@ -190,5 +195,6 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
