@@ -81,12 +81,10 @@ public class CheckoutSolution {
                 {
                     String otherItem = item.combos[i].otherItem;
                     int cnt1 = count / item.combos[i].multiplier;
-                    int cnt2 = count % item.combos[i].multiplier;
                     if (cnt1 == 0) continue;
                     Integer cnt_prev = item_cnt.get(otherItem);
                     if (cnt_prev == null) cnt_prev = 0;
                     item_cnt.put(otherItem, cnt_prev + cnt1);
-                    item_cnt.put(key, cnt2);
                 }
             }
         }
@@ -113,7 +111,7 @@ public class CheckoutSolution {
     public static void main(String[] args) {
         //do some quick tests inline here
         //System.out.println(new CheckoutSolution().checkout("AABCDBAAEEAAAAA"));
-        //System.out.println(new CheckoutSolution().checkout("E"));
+        System.out.println(new CheckoutSolution().checkout("EE"));
         //System.out.println(new CheckoutSolution().checkout("ABCDE"));
         //System.out.println(new CheckoutSolution().checkout("AAAAA"));
         /*
@@ -123,6 +121,7 @@ public class CheckoutSolution {
         */
     }
 }
+
 
 
 
