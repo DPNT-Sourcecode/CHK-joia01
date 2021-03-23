@@ -8,25 +8,38 @@ public class CheckoutSolutionTest {
     @Test
     public void test1()
     {
-        Assert.assertTrue(new CheckoutSolution().checkout("AABCDBAAEEAAAAA") == 525);
+        Assert.assertEquals((long)(new CheckoutSolution().checkout("AABCDBAAEEAAAAA")), 525);
     }
 
     @Test
     public void test2()
     {
-        Assert.assertTrue(new CheckoutSolution().checkout("EE") == 80);
+        Assert.assertEquals((long)(new CheckoutSolution().checkout("EE")), 80);
     }
 
     @Test
     public void test3()
     {
-        Assert.assertTrue(new CheckoutSolution().checkout("EEB") == 80);
+        Assert.assertEquals((long)(new CheckoutSolution().checkout("EEB")), 80);
     }
 
     @Test
     public void test4()
     {
-        Assert.assertTrue(new CheckoutSolution().checkout("EEEB") == 120);
+        Assert.assertEquals((long)(new CheckoutSolution().checkout("EEEB")), 120);
+    }
+
+    @Test
+    public void test5()
+    {
+        Assert.assertEquals((long)(new CheckoutSolution().checkout("EEEBFFF")), 140);
+    }
+
+    @Test
+    public void test6()
+    {
+        Assert.assertEquals((long)(new CheckoutSolution().checkout("EEEBFF")), 140);
     }
 }
+
 
