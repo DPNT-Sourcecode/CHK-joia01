@@ -57,32 +57,32 @@ public class CheckoutSolution {
     public CheckoutSolution() {
         priceTable = new Hashtable<>();
 
-        priceTable.put("A", new SkuValue(50, new Combo[]{new Combo(5, 200, null), new Combo(3, 130, null),})); // init from high to low count
-        priceTable.put("B", new SkuValue(30, new Combo[]{new Combo(2, 45, null)}));
-        priceTable.put("C", new SkuValue(20, null));
-        priceTable.put("D", new SkuValue(15, null));
-        priceTable.put("E", new SkuValue(40, new Combo[]{new Combo(2, -1, "B")}));
-        priceTable.put("F", new SkuValue(10, new Combo[]{new Combo(2, -1, "F")}));
-        priceTable.put("G", new SkuValue(20, null));
-        priceTable.put("H", new SkuValue(10, new Combo[]{new Combo(10, 80, null), new Combo(5, 45, null),})); // init from high to low count
-        priceTable.put("I", new SkuValue(35, null));
-        priceTable.put("J", new SkuValue(60, null));
-        priceTable.put("K", new SkuValue(80, new Combo[]{new Combo(2, 150, null)}));
-        priceTable.put("L", new SkuValue(90, null));
-        priceTable.put("M", new SkuValue(15, null));
-        priceTable.put("N", new SkuValue(40, new Combo[]{new Combo(3, -1, "M")}));
-        priceTable.put("O", new SkuValue(10, null));
-        priceTable.put("P", new SkuValue(50, new Combo[]{new Combo(5, 200, null)}));
-        priceTable.put("Q", new SkuValue(30, new Combo[]{new Combo(3, 80, null)}));
-        priceTable.put("R", new SkuValue(50, new Combo[]{new Combo(3, -1, "Q")}));
-        priceTable.put("S", new SkuValue(30, null));
-        priceTable.put("T", new SkuValue(20, null));
-        priceTable.put("U", new SkuValue(40, new Combo[]{new Combo(3, -1, "U")}));
-        priceTable.put("V", new SkuValue(50, new Combo[]{new Combo(3, 130, null), new Combo(2, 90, null),})); // init from high to low count
-        priceTable.put("W", new SkuValue(20, null));
-        priceTable.put("X", new SkuValue(90, null));
-        priceTable.put("Y", new SkuValue(10, null));
-        priceTable.put("Z", new SkuValue(50, null));
+        priceTable.put("A", new SkuValue("A",50, new Combo[]{new Combo(5, 200, null), new Combo(3, 130, null),})); // init from high to low count
+        priceTable.put("B", new SkuValue("B",30, new Combo[]{new Combo(2, 45, null)}));
+        priceTable.put("C", new SkuValue("C",20, null));
+        priceTable.put("D", new SkuValue("D",15, null));
+        priceTable.put("E", new SkuValue("E",40, new Combo[]{new Combo(2, -1, "B")}));
+        priceTable.put("F", new SkuValue("F",10, new Combo[]{new Combo(2, -1, "F")}));
+        priceTable.put("G", new SkuValue("G",20, null));
+        priceTable.put("H", new SkuValue("H",10, new Combo[]{new Combo(10, 80, null), new Combo(5, 45, null),})); // init from high to low count
+        priceTable.put("I", new SkuValue("I",35, null));
+        priceTable.put("J", new SkuValue("J",60, null));
+        priceTable.put("K", new SkuValue("K",80, new Combo[]{new Combo(2, 150, null)}));
+        priceTable.put("L", new SkuValue("L",90, null));
+        priceTable.put("M", new SkuValue("M",15, null));
+        priceTable.put("N", new SkuValue("N",40, new Combo[]{new Combo(3, -1, "M")}));
+        priceTable.put("O", new SkuValue("O",10, null));
+        priceTable.put("P", new SkuValue("P",50, new Combo[]{new Combo(5, 200, null)}));
+        priceTable.put("Q", new SkuValue("Q",30, new Combo[]{new Combo(3, 80, null)}));
+        priceTable.put("R", new SkuValue("R",50, new Combo[]{new Combo(3, -1, "Q")}));
+        priceTable.put("S", new SkuValue("S",30, null));
+        priceTable.put("T", new SkuValue("T",20, null));
+        priceTable.put("U", new SkuValue("U",40, new Combo[]{new Combo(3, -1, "U")}));
+        priceTable.put("V", new SkuValue("V", 50, new Combo[]{new Combo(3, 130, null), new Combo(2, 90, null),})); // init from high to low count
+        priceTable.put("W", new SkuValue("W",20, null));
+        priceTable.put("X", new SkuValue("X",90, null));
+        priceTable.put("Y", new SkuValue("Y",10, null));
+        priceTable.put("Z", new SkuValue("Z",50, null));
 
         groups = new Group[1];
         groups[0] = new Group(new String[] { "S", "T", "X", "Y", "Z" }, new Combo(3, 45, null));
@@ -152,23 +152,24 @@ public class CheckoutSolution {
         // CHECK GROUPS
         for (int i = 0; i < groups.length; i++) {
             Group group = groups[i];
+
             int groupCnt = 0;
             PriorityQueue<SkuValue> queue = new PriorityQueue<>(10, new Comparator<SkuValue>() {
                 @Override
                 public int compare(SkuValue o1, SkuValue o2) {
-                    return o1.value - o2.value;
+                    return o2.value - o1.value;
                 }
             });
             for (String key : item_cnt.keySet()) {
                 if (group.isInGroup(key)) {
                     groupCnt++;
-                    queue.add();
+                    queue.add(priceTable.get(key));
                 }
             }
             total += groupCnt / group.combo.multiplier * group.combo.special_value;
             groupCnt -= groupCnt % group.combo.multiplier;
             for (int j = 0; j < groupCnt; j++) {
-
+                queue.remove();
             }
         }
 
@@ -195,6 +196,7 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
 
