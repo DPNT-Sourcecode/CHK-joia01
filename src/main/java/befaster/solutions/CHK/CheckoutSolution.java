@@ -75,14 +75,14 @@ public class CheckoutSolution {
         priceTable.put("P", new SkuValue("P",50, new Combo[]{new Combo(5, 200, null)}));
         priceTable.put("Q", new SkuValue("Q",30, new Combo[]{new Combo(3, 80, null)}));
         priceTable.put("R", new SkuValue("R",50, new Combo[]{new Combo(3, -1, "Q")}));
-        priceTable.put("S", new SkuValue("S",30, null));
+        priceTable.put("S", new SkuValue("S",20, null));
         priceTable.put("T", new SkuValue("T",20, null));
         priceTable.put("U", new SkuValue("U",40, new Combo[]{new Combo(3, -1, "U")}));
         priceTable.put("V", new SkuValue("V", 50, new Combo[]{new Combo(3, 130, null), new Combo(2, 90, null),})); // init from high to low count
         priceTable.put("W", new SkuValue("W",20, null));
-        priceTable.put("X", new SkuValue("X",90, null));
-        priceTable.put("Y", new SkuValue("Y",10, null));
-        priceTable.put("Z", new SkuValue("Z",50, null));
+        priceTable.put("X", new SkuValue("X",17, null));
+        priceTable.put("Y", new SkuValue("Y",20, null));
+        priceTable.put("Z", new SkuValue("Z",21, null));
 
         groups = new Group[1];
         groups[0] = new Group(new String[] { "S", "T", "X", "Y", "Z" }, new Combo(3, 45, null));
@@ -198,6 +198,7 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
 
