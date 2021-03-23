@@ -64,4 +64,11 @@ public class CheckoutSolutionTest {
     {
         Assert.assertEquals((long)(new CheckoutSolution().checkout("ABCDEF")), 165);
     }
+
+    @Test
+    public void test11()
+    {
+        Assert.assertEquals((long)(new CheckoutSolution().checkout("G")), 20);
+    }
 }
+
