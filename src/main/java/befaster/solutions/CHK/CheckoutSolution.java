@@ -32,11 +32,11 @@ public class CheckoutSolution {
     Hashtable<String, SkuValue> priceTable = new Hashtable<>(); // overkill for this, but for for large number of items
 
     public CheckoutSolution() {
-        priceTable.put("A", new SkuValue(50, new Combo[] { new Combo(5, 200, null), new Combo(3, 130, null), } )); // init from high to low count
-        priceTable.put("B", new SkuValue(30, new Combo[] { new Combo(2, 45, null) } ));
+        priceTable.put("A", new SkuValue(50, new Combo[]{new Combo(5, 200, null), new Combo(3, 130, null),})); // init from high to low count
+        priceTable.put("B", new SkuValue(30, new Combo[]{new Combo(2, 45, null)}));
         priceTable.put("C", new SkuValue(20, null));
         priceTable.put("D", new SkuValue(15, null));
-        priceTable.put("E", new SkuValue(40, new Combo[] { new Combo(2, -1, "B") }));
+        priceTable.put("E", new SkuValue(40, new Combo[]{new Combo(2, -1, "B")}));
     }
 
     public Integer checkout(String skus) {
@@ -82,7 +82,10 @@ public class CheckoutSolution {
                     String otherItem = item.combos[i].otherItem;
                     int cnt1 = count / item.combos[i].multiplier;
                     int cnt2 = count % item.combos[i].multiplier;
-                    item_cnt.put(otherItem, item_cnt.get(otherItem) + cnt1);
+                    if (cnt1 == 0) continue;
+                    Integer cnt_prev = item_cnt.get(otherItem);
+                    if (cnt_prev == null) cnt_prev = 0;
+                    item_cnt.put(otherItem, cnt_prev + cnt1);
                     item_cnt.put(key, cnt2);
                 }
             }
@@ -110,7 +113,9 @@ public class CheckoutSolution {
     public static void main(String[] args) {
         //do some quick tests inline here
         //System.out.println(new CheckoutSolution().checkout("AABCDBAAEEAAAAA"));
-        System.out.println(new CheckoutSolution().checkout("E"));
+        //System.out.println(new CheckoutSolution().checkout("E"));
+        //System.out.println(new CheckoutSolution().checkout("ABCDE"));
+        System.out.println(new CheckoutSolution().checkout("AAAAA"));
         /*
         System.out.println(new CheckoutSolution().checkout("A,  A,B,C,D,B,A,A"));
         System.out.println(new CheckoutSolution().checkout("A;A;  B;C;D;B;A;A"));
@@ -118,4 +123,5 @@ public class CheckoutSolution {
         */
     }
 }
+
 
