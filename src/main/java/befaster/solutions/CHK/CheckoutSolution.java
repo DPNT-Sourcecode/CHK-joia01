@@ -115,7 +115,7 @@ public class CheckoutSolution {
         //System.out.println(new CheckoutSolution().checkout("AABCDBAAEEAAAAA"));
         //System.out.println(new CheckoutSolution().checkout("E"));
         //System.out.println(new CheckoutSolution().checkout("ABCDE"));
-        System.out.println(new CheckoutSolution().checkout("AAAAA"));
+        //System.out.println(new CheckoutSolution().checkout("AAAAA"));
         /*
         System.out.println(new CheckoutSolution().checkout("A,  A,B,C,D,B,A,A"));
         System.out.println(new CheckoutSolution().checkout("A;A;  B;C;D;B;A;A"));
@@ -123,5 +123,6 @@ public class CheckoutSolution {
         */
     }
 }
+
 
 
