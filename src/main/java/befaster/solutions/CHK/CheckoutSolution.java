@@ -21,14 +21,13 @@ public class CheckoutSolution {
         }
     }
 
-    Hashtable<String, SkuValue> priceTable = new Hashtable<>(); // overkill for this, but for larger stuff ok
+    Hashtable<String, SkuValue> priceTable = new Hashtable<>(); // overkill for this, but for for large number of items
 
-    public CheckoutSolution()
-    {
+    public CheckoutSolution() {
         priceTable.put("A", new SkuValue("A", 50, 3, 130));
         priceTable.put("A", new SkuValue("B", 30, 2, 45));
-        priceTable.put("A", new SkuValue("C", 20, 3, 130));
-        priceTable.put("A", new SkuValue("A", 50, 3, 130));
+        priceTable.put("A", new SkuValue("C", 20, -1, 0));
+        priceTable.put("A", new SkuValue("D", 15, -1, 0));
     }
 
     public Integer checkout(String skus) {
@@ -37,10 +36,9 @@ public class CheckoutSolution {
         // assume skus of form  "A,B,C,D"
         // assume skus of form  "A;B;C"
 
-
-
+        // PARSE INPUT
         String items[];
-        HashMap<String, Integer> item_cnt = new HashMap<>(); // overkill for current example
+        HashMap<String, Integer> item_cnt = new HashMap<>(); // overkill for current example, but ok for large number of items
 
         if (skus.indexOf(" ") > 0) items = skus.split(" ");
         else if (skus.indexOf(",") > 0) items = skus.split(",");
@@ -57,12 +55,8 @@ public class CheckoutSolution {
             else item_cnt.put(items[i], cnt + 1);
         }
 
-
+        //COMPUTE
+        for (String key : item_cnt.keySet()
 
     }
 }
-
-
-
-
-
