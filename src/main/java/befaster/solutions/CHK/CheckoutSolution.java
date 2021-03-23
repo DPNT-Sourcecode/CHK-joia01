@@ -66,6 +66,15 @@ public class CheckoutSolution {
 
         //COMPUTE
         int total = 0;
+
+        // 2 pass algorithm; first apply only rule of kind "2E get one B free"
+        for (String key : item_cnt.keySet())
+        {
+            SkuValue item = priceTable.get(key);
+            int count = item_cnt.get(key);
+            
+        }
+
         for (String key : item_cnt.keySet())
         {
             SkuValue item = priceTable.get(key);
@@ -89,6 +98,7 @@ public class CheckoutSolution {
         System.out.println(new CheckoutSolution().checkout("A A  B C D B    A A"));
     }
 }
+
 
 
 
