@@ -47,7 +47,8 @@ public class CheckoutSolution {
 
         // PARSE INPUT
         String items[];
-        HashMap<String, Integer> item_cnt = new HashMap<>(); // overkill for current example, but ok for large number of items
+        HashMap<String, Integer> item_cnt = new HashMap<>();
+        HashMap<String, Integer> free_item_cnt = new HashMap<>();
 
         if (skus.indexOf(",") > 0) items = skus.split("\\W+,\\W+");
         else if (skus.indexOf(";") > 0) items = skus.split(";\\W+");
@@ -85,7 +86,7 @@ public class CheckoutSolution {
                     Integer cnt_prev = item_cnt.get(otherItem);
                     if (cnt_prev == null) cnt_prev = 0;
                     item_cnt.put(otherItem, cnt_prev + cnt1);
-                    
+
                 }
             }
         }
@@ -123,3 +124,4 @@ public class CheckoutSolution {
         */
     }
 }
+
