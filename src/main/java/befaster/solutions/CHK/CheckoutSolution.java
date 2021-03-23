@@ -31,10 +31,10 @@ public class CheckoutSolution {
     }
 
     public Integer checkout(String skus) {
-        // assume skus of form "ABBCD"
-        // assume skus of form "A B B C D"
-        // assume skus of form  "A,B,C,D"
-        // assume skus of form  "A;B;C"
+        // assume skus of form "ABBCD" ?
+        // assume skus of form "A B B C D" ?
+        // assume skus of form  "A,B,C,D" ?
+        // assume skus of form  "A;B;C" ?
 
         // PARSE INPUT
         String items[];
@@ -73,12 +73,13 @@ public class CheckoutSolution {
 
     public static void main(String[] args) {
         //do some quick tests inline here
-        //new CheckoutSolution().checkout("AABCDBAA");
-        //new CheckoutSolution().checkout("A,  A,B,C,D,B,A,A");
-        //new CheckoutSolution().checkout("A;A;  B;C;D;B;A;A");
-        new CheckoutSolution().checkout("A A  B C D B    A A");
+        System.out.println(new CheckoutSolution().checkout("AABCDBAA"));
+        System.out.println(new CheckoutSolution().checkout("A,  A,B,C,D,B,A,A"));
+        System.out.println(new CheckoutSolution().checkout("A;A;  B;C;D;B;A;A"));
+        System.out.println(new CheckoutSolution().checkout("A A  B C D B    A A"));
     }
 }
+
 
 
 
