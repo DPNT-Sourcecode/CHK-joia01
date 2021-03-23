@@ -37,6 +37,7 @@ public class CheckoutSolution {
         priceTable.put("C", new SkuValue(20, null));
         priceTable.put("D", new SkuValue(15, null));
         priceTable.put("E", new SkuValue(40, new Combo[]{new Combo(2, -1, "B")}));
+        priceTable.put("F", new SkuValue(10, new Combo[]{new Combo(2, -1, "F")}));
     }
 
     public Integer checkout(String skus) {
@@ -127,9 +128,3 @@ public class CheckoutSolution {
         */
     }
 }
-
-
-
-
-
-
