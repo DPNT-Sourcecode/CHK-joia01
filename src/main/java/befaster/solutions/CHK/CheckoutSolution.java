@@ -85,6 +85,7 @@ public class CheckoutSolution {
                     Integer cnt_prev = item_cnt.get(otherItem);
                     if (cnt_prev == null) cnt_prev = 0;
                     item_cnt.put(otherItem, cnt_prev + cnt1);
+                    
                 }
             }
         }
@@ -122,6 +123,7 @@ public class CheckoutSolution {
         */
     }
 }
+
 
 
 
