@@ -169,7 +169,9 @@ public class CheckoutSolution {
             total += groupCnt / group.combo.multiplier * group.combo.special_value;
             groupCnt -= groupCnt % group.combo.multiplier;
             for (int j = 0; j < groupCnt; j++) {
-                queue.remove();
+                SkuValue item = queue.remove();
+                int prev_cnt = item_cnt.get(item.ident);
+                item_cnt.put(item.ident, prev_cnt - 1);
             }
         }
 
@@ -196,6 +198,7 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
 
