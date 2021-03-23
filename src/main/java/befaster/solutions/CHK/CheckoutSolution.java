@@ -51,7 +51,7 @@ public class CheckoutSolution {
 
         for (int i = 0; i < items.length; i++) {
             Integer cnt = item_cnt.get(items[i]);
-            if (cnt == null) item_cnt.put(items[i], 0);
+            if (cnt == null) item_cnt.put(items[i], 1);
             else item_cnt.put(items[i], cnt + 1);
         }
 
@@ -70,7 +70,9 @@ public class CheckoutSolution {
 
     public static void main(String[] args) {
         //do some quick tests inline here
-        
+        int result = new CheckoutSolution().checkout("AABCDBAA");
+        System.out.println(result);
     }
 }
+
 
