@@ -10,10 +10,12 @@ public class CheckoutSolution {
     class Combo {
         int multiplier;
         int special_value;
+        String otherItem;
 
-        public Combo(int multiplier, int special_value) {
+        public Combo(int multiplier, int special_value, String otherItem) {
             this.multiplier = multiplier;
             this.special_value = special_value;
+            this.otherItem = otherItem;
         }
     }
 
@@ -30,11 +32,11 @@ public class CheckoutSolution {
     Hashtable<String, SkuValue> priceTable = new Hashtable<>(); // overkill for this, but for for large number of items
 
     public CheckoutSolution() {
-        priceTable.put("A", new SkuValue(50, new Combo[] { new Combo(3, 130), new Combo(5, 200)} ));
-        priceTable.put("B", new SkuValue(50, new Combo[] { new Combo(2, 45) } ));
+        priceTable.put("A", new SkuValue(50, new Combo[] { new Combo(5, 200, null), new Combo(3, 130, null), } )); // init from high to low count
+        priceTable.put("B", new SkuValue(50, new Combo[] { new Combo(2, 45, null) } ));
         priceTable.put("C", new SkuValue(20, null));
         priceTable.put("D", new SkuValue(15, null));
-        priceTable.put("E", new SkuValue(15, null));
+        priceTable.put("E", new SkuValue(15, new Combo[] { new Combo(2, -1, "B") }));
     }
 
     public Integer checkout(String skus) {
@@ -69,6 +71,7 @@ public class CheckoutSolution {
             SkuValue item = priceTable.get(key);
             int count = item_cnt.get(key);
             if (item == null) return -1;
+
             if (item.multiplier != -1)
                 total += (count / item.multiplier) * item.special_value + (count % item.multiplier) * item.value;
             else
@@ -86,5 +89,6 @@ public class CheckoutSolution {
         System.out.println(new CheckoutSolution().checkout("A A  B C D B    A A"));
     }
 }
+
 
 
