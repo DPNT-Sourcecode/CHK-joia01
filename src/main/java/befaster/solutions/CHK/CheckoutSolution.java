@@ -138,7 +138,13 @@ public class CheckoutSolution {
         }
 
         // CHECK GROUPS
-    
+        for (int i = 0; i < groups.length; i++) {
+            Group group = groups[i];
+            int groupCnt = 0;
+            for (String key : item_cnt.keySet()) {
+                
+            }
+        }
 
         // FINAL COMPUTATION
         for (String key : item_cnt.keySet())
@@ -163,6 +169,7 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
 
