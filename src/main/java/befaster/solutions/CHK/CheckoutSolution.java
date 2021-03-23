@@ -120,9 +120,9 @@ public class CheckoutSolution {
     public static void main(String[] args) {
         //do some quick tests inline here
         //System.out.println(new CheckoutSolution().checkout("AABCDBAAEEAAAAA"));
-        //System.out.println(new CheckoutSolution().checkout("EE"));
+        System.out.println(new CheckoutSolution().checkout("EE"));
         System.out.println(new CheckoutSolution().checkout("EEB"));
-        //System.out.println(new CheckoutSolution().checkout("EEEB"));
+        System.out.println(new CheckoutSolution().checkout("EEEB"));
         //System.out.println(new CheckoutSolution().checkout("ABCDE"));
         //System.out.println(new CheckoutSolution().checkout("AAAAA"));
         /*
@@ -132,6 +132,7 @@ public class CheckoutSolution {
         */
     }
 }
+
 
 
 
