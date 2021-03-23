@@ -200,10 +200,3 @@ public class CheckoutSolution {
     }
 
 }
-
-
-
-
-
-
-

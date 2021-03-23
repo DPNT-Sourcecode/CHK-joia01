@@ -77,5 +77,3 @@ public class CheckoutSolutionTest {
         Assert.assertEquals(152, (long)(new CheckoutSolution().checkout("STXYZSTXYZ")));
     }
 }
-
-
