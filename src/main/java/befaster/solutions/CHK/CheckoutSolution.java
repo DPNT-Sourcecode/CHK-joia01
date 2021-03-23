@@ -154,7 +154,7 @@ public class CheckoutSolution {
                 if (group.isInGroup(key)) groupCnt++;
             }
             total += groupCnt / group.combo.multiplier * group.combo.special_value;
-
+            groupCnt -= groupCnt % group.combo.multiplier;
         }
 
         // FINAL COMPUTATION
@@ -180,3 +180,4 @@ public class CheckoutSolution {
     }
 
 }
+
