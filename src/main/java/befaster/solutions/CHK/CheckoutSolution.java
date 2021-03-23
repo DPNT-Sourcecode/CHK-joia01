@@ -40,7 +40,7 @@ public class CheckoutSolution {
     }
 
     Hashtable<String, SkuValue> priceTable = null;
-    Group groups = null;
+    Group groups[]= null;
 
     public CheckoutSolution() {
         priceTable = new Hashtable<>();
@@ -73,6 +73,7 @@ public class CheckoutSolution {
         priceTable.put("Z", new SkuValue(50, null));
 
         groups = new Group[1];
+        groups[0] = new Group(new String[] { "S", "T", "X", "Y", "Z" }, new Combo(3, 45, null));
     }
 
     public Integer checkout(String skus) {
@@ -103,7 +104,7 @@ public class CheckoutSolution {
         //COMPUTE
         int total = 0;
 
-        // 2 pass algorithm; first apply only rule of kind "2E get one B free"
+        // first apply rules of kind "2E get one B free"
         for (String key : item_cnt.keySet())
         {
             SkuValue item = priceTable.get(key);
@@ -136,6 +137,10 @@ public class CheckoutSolution {
             }
         }
 
+        // CHECK GROUPS
+    
+
+        // FINAL COMPUTATION
         for (String key : item_cnt.keySet())
         {
             SkuValue item = priceTable.get(key);
@@ -158,6 +163,7 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
 
