@@ -92,13 +92,14 @@ public class CheckoutSolution {
         {
             SkuValue item = priceTable.get(key);
             if (item == null) return -1;
-            if (item.combos == null) continue;
 
             int count = item_cnt.get(key);
-            for (int i = 0; i < item.combos.length; i++) {
-                Combo combo = item.combos[i];
-                total += (count / combo.multiplier) * combo.special_value;
-                count = count % combo.multiplier;
+            if (item.combos != null)  {
+                for (int i = 0; i < item.combos.length; i++) {
+                    Combo combo = item.combos[i];
+                    total += (count / combo.multiplier) * combo.special_value;
+                    count = count % combo.multiplier;
+                }
             }
             total += count * item.value;
         }
@@ -116,11 +117,3 @@ public class CheckoutSolution {
         */
     }
 }
-
-
-
-
-
-
-
-
