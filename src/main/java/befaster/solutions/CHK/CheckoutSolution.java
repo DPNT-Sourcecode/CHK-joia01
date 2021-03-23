@@ -81,11 +81,9 @@ public class CheckoutSolution {
                 if (item.combos[i].otherItem != null)
                 {
                     String otherItem = item.combos[i].otherItem;
-                    int cnt1 = count / item.combos[i].multiplier;
-                    if (cnt1 == 0) continue;
-                    Integer cnt_prev = item_cnt.get(otherItem);
-                    if (cnt_prev == null) cnt_prev = 0;
-                    item_cnt.put(otherItem, cnt_prev + cnt1);
+                    int free_cnt = count / item.combos[i].multiplier;
+                    if (free_cnt == 0) continue;
+                    free_item_cnt.put(otherItem, free_cnt);
 
                 }
             }
@@ -97,10 +95,18 @@ public class CheckoutSolution {
             if (item == null) return -1;
 
             int count = item_cnt.get(key);
+            Integer free_count = free_item_cnt.get(key);
+            if (free_count == null) free_count = 0;
             if (item.combos != null)  {
                 for (int i = 0; i < item.combos.length; i++) {
                     Combo combo = item.combos[i];
                     if (combo.multiplier == -1) continue;
+
+                    if (count + free_count >= combo.multiplier) {
+                        free_count -= combo.multiplier - count;
+                        count = combo.multiplier;
+                    }
+
                     total += (count / combo.multiplier) * combo.special_value;
                     count = count % combo.multiplier;
                 }
@@ -124,4 +130,5 @@ public class CheckoutSolution {
         */
     }
 }
+
 
