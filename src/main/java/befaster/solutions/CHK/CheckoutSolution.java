@@ -2,8 +2,10 @@ package befaster.solutions.CHK;
 
 import befaster.runner.SolutionNotImplementedException;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.PriorityQueue;
 
 public class CheckoutSolution {
 
@@ -81,8 +83,7 @@ public class CheckoutSolution {
         priceTable.put("Z", new SkuValue(50, null));
 
         groups = new Group[1];
-        groups[0] = new Group(new String[] { "Z", "S", "T", "Y", "X" }, // in decreasing order of value
-                              new Combo(3, 45, null));
+        groups[0] = new Group(new String[] { "S", "T", "X", "Y", "Z" }, new Combo(3, 45, null));
     }
 
     public Integer checkout(String skus) {
@@ -150,11 +151,20 @@ public class CheckoutSolution {
         for (int i = 0; i < groups.length; i++) {
             Group group = groups[i];
             int groupCnt = 0;
+            PriorityQueue<SkuValue> queue = new PriorityQueue<>(10, new Comparator<SkuValue>() {
+                @Override
+                public int compare(SkuValue o1, SkuValue o2) {
+                    return o1.value - o2.value;
+                }
+            });
             for (String key : item_cnt.keySet()) {
                 if (group.isInGroup(key)) groupCnt++;
             }
             total += groupCnt / group.combo.multiplier * group.combo.special_value;
             groupCnt -= groupCnt % group.combo.multiplier;
+            for (int j = 0; j < groupCnt; j++) {
+
+            }
         }
 
         // FINAL COMPUTATION
@@ -180,4 +190,5 @@ public class CheckoutSolution {
     }
 
 }
+
 
