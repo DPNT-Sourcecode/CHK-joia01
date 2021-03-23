@@ -162,8 +162,10 @@ public class CheckoutSolution {
             });
             for (String key : item_cnt.keySet()) {
                 if (group.isInGroup(key)) {
-                    groupCnt++;
-                    queue.add(priceTable.get(key));
+                    SkuValue skuValue = priceTable.get(key);
+                    int count = item_cnt.get(key);
+                    groupCnt += count;
+                    for (int j = 0; j < count; j++) queue.add(skuValue);
                 }
             }
             total += groupCnt / group.combo.multiplier * group.combo.special_value;
@@ -198,6 +200,7 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
 
