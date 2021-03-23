@@ -62,7 +62,10 @@ public class CheckoutSolution {
             SkuValue item = priceTable.get(key);
             int count = item_cnt.get(key);
             if (item == null) return -1;
-            total += (count / item.multiplier) * item.special_value + (count % item.multiplier);
+            if (item.multiplier != -1)
+                total += (count / item.multiplier) * item.special_value + (count % item.multiplier) * item.value;
+            else
+                total +=
         }
 
         return total;
@@ -74,5 +77,6 @@ public class CheckoutSolution {
         System.out.println(result);
     }
 }
+
 
 
