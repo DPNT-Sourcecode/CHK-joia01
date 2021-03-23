@@ -67,7 +67,7 @@ public class CheckoutSolution {
         priceTable.put("H", new SkuValue("H",10, new Combo[]{new Combo(10, 80, null), new Combo(5, 45, null),})); // init from high to low count
         priceTable.put("I", new SkuValue("I",35, null));
         priceTable.put("J", new SkuValue("J",60, null));
-        priceTable.put("K", new SkuValue("K",80, new Combo[]{new Combo(2, 150, null)}));
+        priceTable.put("K", new SkuValue("K",70, new Combo[]{new Combo(2, 150, null)}));
         priceTable.put("L", new SkuValue("L",90, null));
         priceTable.put("M", new SkuValue("M",15, null));
         priceTable.put("N", new SkuValue("N",40, new Combo[]{new Combo(3, -1, "M")}));
@@ -200,3 +200,4 @@ public class CheckoutSolution {
     }
 
 }
+
