@@ -2,6 +2,8 @@ package befaster.solutions.CHK;
 
 import befaster.runner.SolutionNotImplementedException;
 
+import java.util.HashMap;
+
 public class CheckoutSolution {
     public Integer checkout(String skus) {
         // assume skus of form "ABBCD"
@@ -10,7 +12,7 @@ public class CheckoutSolution {
         // assume skus of form  "A;B;C"
 
         String items[];
-        int item_cnt[]; // count of each
+        HashMap<String, Integer> item_cnt = new HashMap<>(); // overkill for current example
 
         if (skus.indexOf(" ") > 0) items = skus.split(" ");
         else if (skus.indexOf(",") > 0) items = skus.split(",");
@@ -22,11 +24,16 @@ public class CheckoutSolution {
         }
 
         for (int i = 0; i < items.length; i++) {
-            
+            Integer cnt = item_cnt.get(items[i]);
+            if (cnt == null) item_cnt.put(items[i], 0);
+            else item_cnt.put(items[i], cnt + 1);
         }
+
+        
 
     }
 }
+
 
 
 
