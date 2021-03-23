@@ -29,9 +29,22 @@ public class CheckoutSolution {
         }
     }
 
-    Hashtable<String, SkuValue> priceTable = new Hashtable<>(); // overkill for this, but for for large number of items
+    class Group {
+        String members[];
+        Combo combo;
+
+        public Group(String[] members, Combo combo) {
+            this.members = members;
+            this.combo = combo;
+        }
+    }
+
+    Hashtable<String, SkuValue> priceTable = null;
+    Group groups = null;
 
     public CheckoutSolution() {
+        priceTable = new Hashtable<>();
+
         priceTable.put("A", new SkuValue(50, new Combo[]{new Combo(5, 200, null), new Combo(3, 130, null),})); // init from high to low count
         priceTable.put("B", new SkuValue(30, new Combo[]{new Combo(2, 45, null)}));
         priceTable.put("C", new SkuValue(20, null));
@@ -58,6 +71,8 @@ public class CheckoutSolution {
         priceTable.put("X", new SkuValue(90, null));
         priceTable.put("Y", new SkuValue(10, null));
         priceTable.put("Z", new SkuValue(50, null));
+
+        groups = new Group[1];
     }
 
     public Integer checkout(String skus) {
@@ -143,6 +158,7 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
 
