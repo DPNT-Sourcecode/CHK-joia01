@@ -4,7 +4,6 @@ import befaster.runner.SolutionNotImplementedException;
 
 import java.util.HashMap;
 import java.util.Hashtable;
-import org.junit.Assert;
 
 public class CheckoutSolution {
 
@@ -115,19 +114,6 @@ public class CheckoutSolution {
         return total;
     }
 
-    public static void main(String[] args) {
-        //do some quick tests inline here
-        System.out.println(new CheckoutSolution().checkout("AABCDBAAEEAAAAA"));
-        System.out.println(new CheckoutSolution().checkout("EE"));
-        System.out.println(new CheckoutSolution().checkout("EEB"));
-        System.out.println(new CheckoutSolution().checkout("EEEB"));
-        //System.out.println(new CheckoutSolution().checkout("ABCDE"));
-        //System.out.println(new CheckoutSolution().checkout("AAAAA"));
-        /*
-        System.out.println(new CheckoutSolution().checkout("A,  A,B,C,D,B,A,A"));
-        System.out.println(new CheckoutSolution().checkout("A;A;  B;C;D;B;A;A"));
-        System.out.println(new CheckoutSolution().checkout("A A  B C D B    A A"));
-        */
-    }
 }
+
 
