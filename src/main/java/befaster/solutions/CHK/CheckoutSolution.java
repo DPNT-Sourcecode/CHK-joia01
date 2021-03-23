@@ -56,7 +56,21 @@ public class CheckoutSolution {
         }
 
         //COMPUTE
-        for (String key : item_cnt.keySet()
+        int total = 0;
+        for (String key : item_cnt.keySet())
+        {
+            SkuValue item = priceTable.get(key);
+            int count = item_cnt.get(key);
+            if (item == null) return -1;
+            total += (count / item.multiplier) * item.special_value + (count % item.multiplier);
+        }
 
+        return total;
+    }
+
+    public static void main(String[] args) {
+        //do some quick tests inline here
+        
     }
 }
+
