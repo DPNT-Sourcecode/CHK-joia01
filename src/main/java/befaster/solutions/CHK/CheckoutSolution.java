@@ -36,7 +36,7 @@ public class CheckoutSolution {
         priceTable.put("B", new SkuValue(30, new Combo[]{new Combo(2, 45, null)}));
         priceTable.put("C", new SkuValue(20, null));
         priceTable.put("D", new SkuValue(15, null));
-        priceTable.put("E", new SkuValue(40, new Combo[]{new Combo(2, -1, "B")}));
+        priceTable.put("E", new SkuValue(40, new Combo[]{new Combo(-1, 0, "B")}));
     }
 
     public Integer checkout(String skus) {
@@ -98,6 +98,7 @@ public class CheckoutSolution {
             if (item.combos != null)  {
                 for (int i = 0; i < item.combos.length; i++) {
                     Combo combo = item.combos[i];
+                    if (combo.multiplier == -1) continue;
                     total += (count / combo.multiplier) * combo.special_value;
                     count = count % combo.multiplier;
                 }
@@ -121,6 +122,7 @@ public class CheckoutSolution {
         */
     }
 }
+
 
 
 
