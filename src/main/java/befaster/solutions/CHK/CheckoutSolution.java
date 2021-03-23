@@ -40,7 +40,7 @@ public class CheckoutSolution {
         String items[];
         HashMap<String, Integer> item_cnt = new HashMap<>(); // overkill for current example, but ok for large number of items
 
-        if (skus.indexOf(" ") > 0) items = skus.split(" ");
+        if (skus.indexOf(" ") > 0) items = skus.split("\\w");
         else if (skus.indexOf(",") > 0) items = skus.split(",");
         else if (skus.indexOf(";") > 0) items = skus.split(";");
         else {
@@ -73,10 +73,13 @@ public class CheckoutSolution {
 
     public static void main(String[] args) {
         //do some quick tests inline here
-        int result = new CheckoutSolution().checkout("AABCDBAA");
-        System.out.println(result);
+        //new CheckoutSolution().checkout("AABCDBAA");
+        //new CheckoutSolution().checkout("A,A,B,C,D,B,A,A");
+        //new CheckoutSolution().checkout("A;A;B;C;D;B;A;A");
+        new CheckoutSolution().checkout("A A  B C D B    A A");
     }
 }
+
 
 
 
