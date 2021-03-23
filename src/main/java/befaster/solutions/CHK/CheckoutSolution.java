@@ -33,10 +33,10 @@ public class CheckoutSolution {
 
     public CheckoutSolution() {
         priceTable.put("A", new SkuValue(50, new Combo[] { new Combo(5, 200, null), new Combo(3, 130, null), } )); // init from high to low count
-        priceTable.put("B", new SkuValue(50, new Combo[] { new Combo(2, 45, null) } ));
+        priceTable.put("B", new SkuValue(30, new Combo[] { new Combo(2, 45, null) } ));
         priceTable.put("C", new SkuValue(20, null));
         priceTable.put("D", new SkuValue(15, null));
-        priceTable.put("E", new SkuValue(15, new Combo[] { new Combo(2, -1, "B") }));
+        priceTable.put("E", new SkuValue(40, new Combo[] { new Combo(2, -1, "B") }));
     }
 
     public Integer checkout(String skus) {
@@ -116,6 +116,7 @@ public class CheckoutSolution {
         */
     }
 }
+
 
 
 
