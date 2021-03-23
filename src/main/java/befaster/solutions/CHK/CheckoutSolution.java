@@ -11,7 +11,6 @@ public class CheckoutSolution {
         int multiplier;
         int special_value;
         String otherItem;
-        String
 
         public Combo(int multiplier, int special_value, String otherItem) {
             this.multiplier = multiplier;
@@ -144,5 +143,6 @@ public class CheckoutSolution {
     }
 
 }
+
 
 
